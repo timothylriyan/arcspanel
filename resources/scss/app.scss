@@ -1,0 +1,132 @@
+// 1. Impor Google Font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+// 2. Impor file-file utama dari package Bootstrap
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+// 3. Impor Swiper
+@import 'swiper/swiper-bundle.css';
+
+// 4. Impor Select2 dan temanya
+@import 'select2/dist/css/select2.min.css';
+@import 'select2-bootstrap-5-theme/dist/select2-bootstrap-5-theme.min.css';
+
+// Impor Font Awesome
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+
+// ===== TAMBAHKAN KODE INI =====
+html {
+    scroll-behavior: smooth;
+}
+// ===============================
+
+// 5. Terapkan font ke seluruh halaman
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+// ===== CSS UNTUK ANIMASI LOGO KLIEN (VERSI FINAL) =====
+
+.logos {
+  overflow: hidden;
+  padding: 30px 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Animasi akan berhenti saat cursor di atas area logo */
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  display: inline-block;
+  animation: 40s slide infinite linear; /* Durasi animasi bisa disesuaikan */
+}
+
+.logos-slide img {
+  height: 70px; /* Logo lebih besar */
+  width: auto;
+  margin: 0 45px; /* Jarak antar logo */
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+// ===== PERBAIKAN UNTUK SLIDER SERVICES =====
+
+.services-slider {
+  position: relative; // Penting agar panah bisa diposisikan
+  padding: 0 40px;    // Beri ruang di kiri dan kanan untuk panah
+}
+
+// Atur tinggi minimal dan penataan konten di dalam kartu
+.services-slider .card {
+  min-height: 250px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// Atur posisi dan tampilan panah navigasi
+.services-slider .swiper-button-prev,
+.services-slider .swiper-button-next {
+  top: 45%; // Posisikan di tengah secara vertikal (sedikit di atas tengah)
+  transform: translateY(-50%);
+  color: #0d6efd; // Warna biru primary
+  --swiper-navigation-size: 24px; // Ukuran panah
+}
+
+// Posisikan panah 'prev' di luar slider
+.services-slider .swiper-button-prev {
+  left: 0;
+}
+
+// Posisikan panah 'next' di luar slider
+.services-slider .swiper-button-next {
+  right: 0;
+}
+
+// Atur ulang posisi paginasi (titik-titik) agar tidak terlalu jauh
+.services-slider .swiper-pagination {
+    bottom: 10px !important;
+}
+
+// ===== CSS UNTUK SECTION CONTACT US =====
+
+.contact-section {
+  position: relative;
+  background-color: #212529; // Warna dasar gelap
+  overflow: hidden;
+}
+
+// Pseudo-element untuk gambar latar belakang
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  // Ganti 'world-map.png' dengan nama file gambar Anda
+  background-image: url('../images/mapindo.png'); 
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1; // Buat gambar menjadi transparan
+  z-index: 1;
+}
+
+// Pastikan konten utama berada di atas gambar latar
+.contact-section .container {
+  position: relative;
+  z-index: 2;
+}

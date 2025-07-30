@@ -1,0 +1,343 @@
+/* File: public/css/custom.css */
+
+.hero-background {
+  /* Diperlukan agar overlay bisa diposisikan relatif terhadap section ini */
+  position: relative; 
+  background-image: url('../images/hero-bg.png');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+/* Ini adalah lapisan gelap transparan (overlay) */
+.hero-background::before {
+  content: ''; /* Wajib ada untuk pseudo-element */
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* Hitam dengan transparansi 50%. Ubah 0.5 ke 0.7 untuk lebih gelap */
+  z-index: 1; /* Posisikan overlay di bawah konten */
+}
+
+/* Ini memastikan konten (teks dan tombol) berada di atas overlay */
+.hero-background .container {
+  position: relative;
+  z-index: 2;
+}
+/* ===== GAYA UNTUK BACKGROUND SECTION ABOUT US ===== */
+
+.about-bg {
+  position: relative;
+  background-image: url('../images/hero-bg.png'); /* <-- Ganti nama file jika perlu */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+/* Lapisan overlay gelap agar teks mudah dibaca */
+.about-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(33, 37, 41, 0.85); /* Warna .bg-dark dengan transparansi 85% */
+  z-index: -1;
+}
+/* File: public/css/custom.css */
+
+/* ... (kode CSS untuk hero-background dari sebelumnya) ... */
+
+
+/* File: public/css/custom.css */
+
+/* ... (kode CSS hero section tetap sama) ... */
+/* ===== GAYA BARU UNTUK IKON DI KARTU LAYANAN ===== */
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem auto; /* Atas-Bawah Otomatis, Bawah 1.5rem */
+    border-radius: 50%; /* Membuatnya menjadi lingkaran */
+    background-color: #1746A2; /* Warna biru gelap */
+    color: white; /* Warna ikon di dalamnya menjadi putih */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem; /* Ukuran ikon */
+    transition: background-color 0.3s ease;
+}
+
+.feature-card:hover .service-icon {
+    background-color: #0d6efd; /* Warna biru lebih terang saat kartu di-hover */
+}
+
+.services-slider .card-body {
+    padding-top: 2rem; /* Tambah ruang di atas ikon */
+    padding-bottom: 2rem; /* Tambah ruang di bawah deskripsi */
+}
+
+/* ===== KODE BARU UNTUK SLIDER SERVICES (PANAH DI SAMPING) ===== */
+
+.services-slider {
+  /* Memberi ruang di bawah untuk titik paginasi */
+  padding-bottom: 50px; 
+}
+
+.services-slider .swiper-slide {
+    height: auto;
+}
+
+/* Mengatur posisi dan gaya panah navigasi */
+.swiper-button-next,
+.swiper-button-prev {
+    background-color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    color: #333 !important; /* Warna ikon panah. !important untuk menimpa default */
+}
+
+/* Mengatur ukuran ikon panah di dalamnya */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 18px !important;
+    font-weight: bold;
+}
+
+/* Atur posisi panah agar sedikit di luar slider */
+/* Ini hanya akan bekerja di layar besar (desktop) */
+@media (min-width: 1200px) {
+    .swiper-button-prev {
+        left: -20px;
+    }
+    .swiper-button-next {
+        right: -20px;
+    }
+}
+
+
+/* Mengubah warna titik paginasi */
+.swiper-pagination-bullet {
+  background: #adb5bd; /* Warna abu-abu untuk titik yang tidak aktif */
+}
+
+/* Mengubah warna titik paginasi yang sedang aktif */
+.swiper-pagination-bullet-active {
+  background: #0d6efd; /* Warna biru primer Bootstrap */
+}
+
+/* ===== KODE BARU/UPDATE UNTUK SECTION CONTACT ===== */
+.contact-section {
+  position: relative; /* Diperlukan untuk overlay */
+  background-image: url('../images/mapindo.png'); /* Ganti dengan nama file Anda */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Overlay hitam 70% transparan */
+  z-index: -1;
+}
+
+/* ===== KODE UNTUK LOGO CLIENT SLIDER ===== */
+
+.logo-slider {
+    background: white;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.125);
+    height: 120px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.logo-slider::before,
+.logo-slider::after {
+    background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    content: "";
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+}
+
+.logo-slider::before {
+    left: 0;
+    top: 0;
+}
+
+.logo-slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+.logo-track {
+    animation: scroll 40s linear infinite;
+    display: flex;
+    width: calc(250px * 14); /* (lebar per slot) x (jumlah total logo) */
+}
+
+.slide {
+    height: 120px; /* Samakan dengan tinggi .logo-slider */
+    width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+/* --- PERUBAHAN UTAMA ADA DI SINI --- */
+.slide img {
+    height: 80px; /* Atur tinggi maksimal logo */
+    max-width: 180px; /* Atur lebar maksimal logo */
+    width: auto; /* Biarkan lebar menyesuaikan */
+    object-fit: contain; /* PENTING: Mencegah gambar terpotong/distorsi */
+    transition: all 0.3s ease;
+}
+
+.slide img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-250px * 7)); } /* (lebar per slot) x (jumlah logo asli) */
+}
+
+.logo-slider:hover .logo-track {
+    animation-play-state: paused;
+}
+
+
+
+/* SUB-JUDUL (Teks yang di-bold, contoh: Internal Audit Transformation) */
+.service-point-list strong {
+    color: #212529; /* Warna teks hitam standar, lebih tegas dari isinya */
+}
+
+/* ISI (Deskripsi atau poin-poin di bawah sub-judul) */
+.service-point-list > li {
+    color: #6c757d; /* Warna abu-abu (muted) */
+}
+
+/* SUB-SUB POIN (Contoh: Audit Committee) */
+.list-unstyled.ps-4 li {
+    font-style: italic; /* Dibuat miring agar terlihat berbeda */
+    color: #6c757d;
+}
+
+section[id] {
+  scroll-margin-top: 50px; /* Sesuaikan 80px dengan tinggi header Anda */
+}
+
+/* ===== GAYA BARU UNTUK KOTAK FITUR ===== */
+.feature-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.feature-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+}
+
+/* ===== STYLE UNTUK MEMBUAT SECTION FITUR MENUMPUK ===== */
+
+#features {
+    position: relative; /* Diperlukan agar z-index berfungsi */
+    z-index: 10;        /* Pastikan section ini berada di lapisan atas */
+    margin-top: -150px;  /* Tarik section ini ke atas. Sesuaikan nilai -80px jika perlu */
+}
+
+/* Menghilangkan background abu-abu agar terlihat menyatu */
+#features.py-5 {
+    background-color: transparent !important;
+}
+
+/* =================================================================
+   FINAL STYLES UNTUK HALAMAN DETAIL SERVICES (ACCORDION)
+   ================================================================= */
+
+/* Memberi gaya pada tombol header akordion menjadi biru */
+.accordion-button.accordion-button-custom,
+.accordion-button.accordion-button-custom:not(.collapsed) {
+    background-color: #1746A2; /* Warna biru gelap kustom */
+    color: white;
+    font-weight: 500;
+    box-shadow: none; /* Menghilangkan bayangan saat tombol aktif */
+}
+
+/* Mengubah ikon panah menjadi putih saat header biru */
+.accordion-button.accordion-button-custom::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='white'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+/* Mengatur ulang style di dalam body akordion agar rapi */
+.accordion-body .list-group-item {
+    border: 0;
+    padding: 1.25rem 0.25rem;
+}
+
+/* Memberi garis pemisah antar sub-kategori layanan */
+.accordion-body .list-group-item:not(:last-child) {
+    border-bottom: 1px solid #e9ecef !important;
+}
+
+/* Styling untuk judul sub-kategori (misal: Risk Management) */
+.accordion-body .list-group-item h5 {
+    color: #212529; /* Warna hitam */
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* Styling untuk list poin-poin deskripsi */
+.accordion-body .service-point-list {
+    list-style-type: none; /* Menghilangkan bullet point default */
+    padding-left: 0;       /* Menghilangkan padding kiri default dari <ul> */
+    margin-top: 0.75rem;
+}
+
+.accordion-body .service-point-list > li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 0.5rem;
+    color: #6c757d; /* Warna abu-abu */
+}
+
+/* Membuat bullet (titik) custom berwarna biru */
+.accordion-body .service-point-list > li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-size: 1.2rem;
+    color: #1746A2;
+}
+
+/* Styling untuk sub-sub poin (yang list-nya tidak ber-style) */
+.accordion-body .list-unstyled.ps-4.mt-2 li {
+    font-style: italic;
+    color: #6c757d;
+}
+
